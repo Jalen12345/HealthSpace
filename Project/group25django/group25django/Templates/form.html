@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Entry</title>
 </head>
+
 <body>
-    <h1>Form that has category and then input</h1>
+    <div class="container">
+        <section id="content">
+            <form action="">
+                <h1>Add Entry</h1>
+                <div>
+                    <form action="">
+                        <label for="exercices">Choose an exercise:</label>
+                        <select name="exercises" id="exercise">
+                            <option value="pushups">Pushups</option>
+                            <option value="pull-ups">Pull-ups</option>
+                            <option value="chin-ups">Chin-ups</option>
+                        </select>
+                    </form>
+                </div>
+                <div>
+                    <label for="workoutlength">Workout Length (min)</label>
+                    <input type="number" id="workoutlength">
+                </div>
+                <div>
+                    <input type="date" id="date" />
+                </div>
+                <div>
+                    <input type="submit" value="Submit" />
+                </div>
+                <div>
+                    <input type="reset" value="Reset" />
+                </div>
+            </form>
+
+        </section>
+    </div>
 </body>
+
 </html>
