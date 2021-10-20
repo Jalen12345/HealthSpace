@@ -12,4 +12,10 @@ from . import views
 
 urlpatterns = [
     url('^$', views.home),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('diet/', views.diet, name='diet'),
+    path('exercise/', views.exercise, name='exercise'),
+    path('form/', views.form, name='form'),
+    path('login/', views.login, name='login'),
+    path('sleep/', views.sleep, name='sleep')
 ]
