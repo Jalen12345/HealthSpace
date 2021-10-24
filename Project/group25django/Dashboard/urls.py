@@ -14,7 +14,7 @@ urlpatterns = [
     path('diet/', views.diet, name='diet'),
     path('exercise/', views.exercise, name='exercise'),
     path('form/', views.form, name='form'),
-    path('login/', views.login, name='login'),
+    path('login/', views.loginPage, name='login'),
     path('register/', views.register, name='register'),
     path('sleep/', views.sleep, name='sleep')
 ]
