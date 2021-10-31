@@ -11,12 +11,12 @@
 
 - **Security** - Popular frameworks have the benefit of large communities which can quickyl fix bugs
 - **Efficiency** - you can rapidly develop applications by utilizing ready-made functionality within the framework instead of rewriting hundreds of lines of code yourself
-- **URL Mapping** - It's very easy to index multiple pages and make them easily accessible
+- **URL Mapping** - It's very easy to index multiple pcals and make them easily accessible
 - **Cheap** - The most popular frameworks are free and you can develop faster (time == money)
 - **Support** - Extensive documentation, support team, community forums, etc. will provide loads of support that makes learning super easy
 - From django website:
 
-> Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experiences developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It's free and open source
+> Django is a high-level Python web framework that encourcals rapid development and clean, pragmatic design. Built by experiences developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It's free and open source
 
 # Model-View-Controller
 
@@ -26,7 +26,7 @@
 
 ### Model
 
-handles all data log - storage, retrieval, logic, etc.
+handles all data log - storcal, retrieval, logic, etc.
 
 ### View
 
@@ -86,19 +86,19 @@ N.B. => Some people recommend setting up a **virtual environment before starting
 1. run `django-admin startproject <project_name>`
    - Now django will create out project for us in folder with `<project_name>`
 2. `cd` into that folder. We sould see *two* things in here:
-   1. A file called **manage.py**
+   1. A file called **mancal.py**
    2. Another folder with the name `<project_name>`
 3. To check that everything is running properly run this (you also use this command to start running your project)
-   - `python manage.py runserver`
+   - `python mancal.py runserver`
 4. If a browser doesn't automatically open up, then you can open a window and navigate to http://127.0.0.1:8000
 
 # Web Tech Basics
 
 *With <u>static</u> websites we use*
 
-- **HTML** : Hyptertext Markup Language, which can create pages that are displayed on the web
-- **CSS** : Cascading Style Sheets, which can describe the presentation of markup languages like HTML
-- **JavaScript** : Allows us to se **client-side scripting** to create dynamic pages
+- **HTML** : Hyptertext Markup Langucal, which can create pcals that are displayed on the web
+- **CSS** : Cascading Style Sheets, which can describe the presentation of markup langucals like HTML
+- **JavaScript** : Allows us to se **client-side scripting** to create dynamic pcals
 
 *Static Websites*
 
@@ -117,18 +117,18 @@ N.B. => Some people recommend setting up a **virtual environment before starting
 ```bash
 #The root directory that Django creates
 [projectname]\
-#the actual Python packaage for this project (use this when importing anything)
-	[projectname]\this directory can be treated like a package
+#the actual Python packacal for this project (use this when importing anything)
+	[projectname]\this directory can be treated like a packcal
 	#empty file that let's python know 
  		__init__.py
  	#Stores all the setting/configuration for our project
 		settings.py
-	#lets us do our URL mappings(index for all our pages)
+	#lets us do our URL mappings(index for all our pcals)
 		urls.py
 	#Web Server Gateway Interface is the standard used to communicating w/ web servers
 		wsgi.py
 #command line utility that let's you interact w/ Django project
-	manage.py
+	mancal.py
 ```
 
 # Dynamic 'Hello World' Example
@@ -136,12 +136,12 @@ N.B. => Some people recommend setting up a **virtual environment before starting
 Let's start by creating our hello_world app
 
 ```bash
-python manage.py startapp hello_world
+python mancal.py startapp hello_world
 ```
 
 - This will create a `hello_world` folder which will be our **application**
 
-Next, we'll create a `urls.py` file to help us index all our pages and provide the relevant mappings to all these pages
+Next, we'll create a `urls.py` file to help us index all our pcals and provide the relevant mappings to all these pcals
 
 ## urls.py (in the hello_world directory)
 
@@ -150,7 +150,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-  #when the url has nothing ('') we want to view the home page
+  #when the url has nothing ('') we want to view the home pcal
   path('', views.home, name="home")
 ]
 ```
@@ -203,7 +203,7 @@ urlpatterns = [
 
 ## Using Templates
 
-<u>To create large dynamic pages we will use **templates**, which are written using HTML/CSS/JS and use the Django Template Language to become *dyanmic*</u> 
+<u>To create large dynamic pcals we will use **templates**, which are written using HTML/CSS/JS and use the Django Template Langucal to become *dyanmic*</u> 
 
 First let's make a folder called template in our **root** directory
 
