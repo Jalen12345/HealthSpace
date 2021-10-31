@@ -8,8 +8,8 @@
 
 Frontend:
 
-- Design the UI for homepage and additional pages.
-- setup simpliest HTML pages with basic functions described in MVP.
+- Design the UI for homepcal and additional pcals.
+- setup simpliest HTML pcals with basic functions described in MVP.
 
 Backend:
 - create models that store data based on what described in MVP

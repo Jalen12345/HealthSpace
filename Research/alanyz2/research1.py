@@ -4,7 +4,7 @@ class Person:
     #
     # String name
     #
-    # int age
+    # int cal
     #
     # Map<String, Integer> nutrition
     # (keys: nutrition categories like Calories, Carbohydrates. values: numerical values of each category)
@@ -13,9 +13,9 @@ class Person:
     #
     # int sleep (hours of sleep)
 
-    def __init__(self, name, age, nutrition, exercise, sleep):
+    def __init__(self, name, cal, nutrition, exercise, sleep):
         self.name = name
-        self.age = age
+        self.cal = cal
         self.nutrition = nutrition
         self.exercise = exercise
         self.sleep = sleep

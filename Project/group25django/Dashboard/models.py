@@ -7,7 +7,7 @@ class User(models.Model):
     first_name = models.CharField(max_length = 40)
     last_name = models.CharField(max_length = 40)
     email = models.CharField(max_length = 75)
-    age = models.IntegerField()
+    cal = models.IntegerField()
     username = models.CharField(max_length = 30)
     permission = models.BooleanField(default = False)
 

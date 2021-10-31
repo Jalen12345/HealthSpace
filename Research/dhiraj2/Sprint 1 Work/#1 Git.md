@@ -16,7 +16,7 @@
 
 # Git Diagram
 
-![Envisioning Git](https://www.dougmahugh.com/content/images/2019/01/GitCommands-2.png)
+![Envisioning Git](https://www.dougmahugh.com/content/imcals/2019/01/GitCommands-2.png)
 
 # Git Basics
 
@@ -38,7 +38,7 @@
 
 - Creates empy repository in the current directory
 - There will be no commits or files traked initally
-- Usage: 
+- Uscal: 
 
 ```bash
 git init
@@ -47,7 +47,7 @@ git init
 **Clone**
 
 - Downloads an external repository and sets it up as a local repository in the current directory
-- Usage:
+- Uscal:
 
 ```bash
 git clone {url}			
@@ -57,7 +57,7 @@ git clone {url}
 
 - Marks files to be committed in the next commit
 - Git does **NOT** commit the files automitically
-- Usage
+- Uscal
 
 ```bash
 #add a specific file or directory
@@ -74,16 +74,16 @@ git add .
 
 ## git commit
 
-- This will commit staged files to the repository
+- This will commit stcald files to the repository
 - Attach your email/name and when you make the commit
-- Usage:
+- Uscal:
 
 ```bash
-#will commit and open up editor to add message
+#will commit and open up editor to add messcal
 git commit
-#will commit with specified message
-git commit -m "My commit message"
-#will commit all the changed files (w/ message)
+#will commit with specified messcal
+git commit -m "My commit messcal"
+#will commit all the changed files (w/ messcal)
 git commit -am "Commit all changed"
 ```
 
@@ -92,7 +92,7 @@ git commit -am "Commit all changed"
 ## git push
 
 - uploads any new commits to Origin
-- Usage:
+- Uscal:
 
 ```bash
 #will "push" your code in the commit to the origin (assuming you have privileges)
@@ -102,7 +102,7 @@ git push
 ## git pull
 
 - Downloads any commits in the origin but not in your local repository (updates your repository to the origin's version)
-- Usage:
+- Uscal:
 
 ```bash
 #will "pull" the latest version form the origin
@@ -134,7 +134,7 @@ git pull
 
 ## Branching Diagram
 
-![Git Branches: List, Create, Switch to, Merge, Push, &amp; Delete](https://www.nobledesktop.com/image/gitresources/git-branches-merge.png)
+![Git Branches: List, Create, Switch to, Merge, Push, &amp; Delete](https://www.nobledesktop.com/imcal/gitresources/git-branches-merge.png)
 
 ## How to use branches
 
@@ -142,7 +142,7 @@ git pull
 
 - Allows you to "check out" a given branch
 - Create a new branch
-- Usage:
+- Uscal:
 
 ```bash
 #look an existing branch
@@ -155,7 +155,7 @@ git checkout -b "new-branch"
 
 - "Merges" a branch onto the current branch
   - *This is actually part of what happens when you run* `git pull`
-- Usage:
+- Uscal:
 
 ```bash
 #Merge a specified branch onto the branch you're currently on
