@@ -1,23 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta charset="windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traingex</title>
+
+    <style>
+        .container {
+            overflow: hidden
+        }
+
+        .tab {
+            float: left;
+        }
+
+        .tab-2 {
+            margin-left: 50px
+        }
+
+        .tab-2 input {
+            display: block;
+            margin-bottom: 10px
+        }
+
+        tr {
+            transition: all .25s ease-in-out
+        }
+
+        tr:hover {
+            background-color: #EEE;
+            cursor: pointer
+        }
+    </style>
+
 </head>
+
 <body>
-    <table>
-        <tr>
-            <th>Traingex</th>
-            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
-            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
-            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
-            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
-            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
-        </tr>
-    </table>
-    
+
+    <h1>Welcome back, Steven!</h1>
+    <div class="container">
+        <div class="tab tab-1">
+            <table id="table" border="5">
+                <tr>
+                    <th>Date</th>
+                    <th>Current Weight (LB)</th>
+                    <th>Calorie Intake (KCal)</th>
+                    <th>Protein (g)</th>
+                    <th>Carbohydrates (g)</th>
+                    <th>Fats (g)</th>
+                </tr>
+                {% for entry in userMacros %}
+                <tr>
+                    <th>{{entry.user}}</th>
+                    <th>{{entry.date}}</th>
+                    <th>{{entry.currentWeight}}</th>
+                    <th>{{entry.calories}}</th>
+                    <th>{{entry.protein}}</th>
+                    <th>{{entry.fat}}</th>
+                    <th>{{entry.carbs}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="tab tab-2">
+            Date :<input type="date" name="dat" id="dat">
+            Current Weight :<input type="text" name="weight" id="weight">
+            Calorie Intake :<input type="number" name="cal" id="cal">
+            Protein Intake :<input type="number" name="protein" id="protein">
+            Carbs Intake :<input type="number" name="carb" id="carb">
+            Fats Intake :<input type="number" name="fats" id="fats">
+
+
+            <button onclick="addHtmlTableRow();">Add</button>
+            <button onclick="removeSelectedRow();">Remove</button>
+        </div>
+    </div>
+
+    <script>
+
+        var rIndex,
+            table = document.getElementById("table");
+
+        function addHtmlTableRow() {
+            if (!checkEmptyInput()) {
+                var newRow = table.insertRow(table.length),
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    cell4 = newRow.insertCell(3),
+                    cell5 = newRow.insertCell(4),
+                    cell6 = newRow.insertCell(5),
+                    dat = document.getElementById("dat").value,
+                    weight = document.getElementById("weight").value,
+                    cal = document.getElementById("cal").value;
+                protein = document.getElementById("protein").value;
+                carb = document.getElementById("carb").value;
+                fats = document.getElementById("fats").value;
+
+                cell1.innerHTML = dat;
+                cell2.innerHTML = weight;
+                cell3.innerHTML = cal;
+                cell4.innerHTML = protein
+                cell5.innerHTML = carb;
+                cell6.innerHTML = fats;
+                selectedRowToInput();
+            }
+        }
+
+        // display selected row data into input text
+        function selectedRowToInput() {
+
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].onclick = function () {
+                    rIndex = this.rowIndex;
+                    document.getElementById("dat").value = this.cells[0].innerHTML;
+                    document.getElementById("weight").value = this.cells[1].innerHTML;
+                    document.getElementById("cal").value = this.cells[2].innerHTML;
+                    document.getElementById("protein").value = this.cells[3].innerHTML;
+                    document.getElementById("carb").value = this.cells[4].innerHTML;
+                    document.getElementById("fats").value = this.cells[5].innerHTML;
+                };
+            }
+        }
+        selectedRowToInput();
+
+
+        function removeSelectedRow() {
+            table.deleteRow(rIndex + 1);
+            document.getElementById("dat").value = "";
+            document.getElementById("weight").value = "";
+            document.getElementById("cal").value = "";
+            document.getElementById("protein").value = "";
+            document.getElementById("carb").value = "";
+            document.getElementById("fats").value = "";
+        }
+    </script>
+
 </body>
+
 </html>
