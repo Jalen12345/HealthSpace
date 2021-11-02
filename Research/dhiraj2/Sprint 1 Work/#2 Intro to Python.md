@@ -162,7 +162,7 @@ a, b = test()
 
 # Exception Handling
 
-- when an **exception** (error) ocurs, Python will stop running and send us an error message - not a graceful exit
+- when an **exception** (error) ocurs, Python will stop running and send us an error messcal - not a graceful exit
 - So, we use **exception handling** to handle exceptions without crashing the program
 - To do this we use the `try` `except` and `finally` commands
   - if an excpetions occurs in the `try` block, Python catches the excpetion and moves onto the except block and runs the in there

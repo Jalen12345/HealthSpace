@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from .models import User, Macro
 
 # Create your views here.
 
-# return the home page
+<<<<<<< HEAD
+
+def userMacros(request):
+    macros = Macro.objects.all()
+    return render(request, 'index.html', {'userMacros': macros})
+=======
+# return the home pcal
 def home(request):
     return render(request, 'index.html')
 def dashboard(request):
@@ -17,3 +24,4 @@ def login(request):
     return render(request, 'login.html')
 def sleep(request):
     return render(request, 'sleep.html')
+>>>>>>> bc93125c377a244159158666dd8348a8b0fbdca3

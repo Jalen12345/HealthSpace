@@ -29,22 +29,22 @@
 
 # Implementation in Python
 
-In order to bring functions into our program for our own usage, we have to use `import`
+In order to bring functions into our program for our own uscal, we have to use `import`
 
 ## import
 
 you can import:
 
 - **Modules**: simply a file with a .py extension
-- **Package:** a directory containing an `__inint__.py` file and normally other modules
+- **Packcal:** a directory containing an `__inint__.py` file and normally other modules
 - **Built-in Modules** a module that is natively installed with Python
-- **Object**: Anything inside a module/package that can be references such as class, function, or variable
+- **Object**: Anything inside a module/packcal that can be references such as class, function, or variable
 
 ### How to import
 
-- To import an *entire* module/package
+- To import an *entire* module/packcal
 
-  - **Synatx:** import <module/package>
+  - **Synatx:** import <module/packcal>
 
   - Example:
 
@@ -60,7 +60,7 @@ you can import:
 
 - To import *only the stuff you need*
 
-  - **Syntax: ** from <module/package> import <stuff>, <stuff>
+  - **Syntax: ** from <module/packcal> import <stuff>, <stuff>
 
   - Example:
 
@@ -87,15 +87,15 @@ you can import:
 
 ***<u>However, when people write libraries, they use other libraries</u>***
 
-# Package Managers
+# Packcal Mancalrs
 
-- To solve the problem of libraries needing other libraries and so on, we use a package manager to handle all this stuff for us
+- To solve the problem of libraries needing other libraries and so on, we use a packcal mancalr to handle all this stuff for us
 
 ## pip
 
-- Pythons package manager is called pip
-- To install a pakcage you do `pip install <package name>`
-- If you want to get all the packages you need to run your code
+- Pythons packcal mancalr is called pip
+- To install a pakccal you do `pip install <packcal name>`
+- If you want to get all the packcals you need to run your code
   - use a `requirements.txt` file that lists all the libraries and their version so you can download them all using `pip install -r requirements.txt`
 
 # APIs
@@ -113,7 +113,7 @@ you can import:
 
 - Designed to allow for communication between clients and servers
 
-![HTTP_RequestMessageExample](https://documentation.help/DogeTool-HTTP-Requests-vt/http_requestmessageexample.png)
+![HTTP_RequestMesscalExample](https://documentation.help/DogeTool-HTTP-Requests-vt/http_requestmesscalexample.png)
 
 ### Methods
 
@@ -135,7 +135,7 @@ you can import:
 
 ### Data Representation
 
-| JSON - JavaScript Object Notation    | XML - Extensible Markup Language           |
+| JSON - JavaScript Object Notation    | XML - Extensible Markup Langucal           |
 | ------------------------------------ | ------------------------------------------ |
 | Similar to dictionaries              | Older format                               |
 | Standard for serializing data object | not as popular                             |
