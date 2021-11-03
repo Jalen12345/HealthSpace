@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
 from django.http import HttpResponse
-from Dashboard.models import User
+from Dashboard.models import User, Macro
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.forms import inlineformset_factory
@@ -11,9 +11,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 import time
+
 # Create your views here.
 
-# return the home page
+
+def userMacros(request):
+    macros = Macro.objects.all()
+    return render(request, 'index.html', {'userMacros': macros})
+# return the home pcal
 def home(request):
     return render(request, 'index.html')
 def dashboard(request):

@@ -5,4 +5,4 @@ Group Name: TEAM_NAME
 
 Team Members: alanyz2, dhiraj2, svmore2, aayushb5, namans5, jalenx2
 
-Project Manager: jw90
+Project Mancalr: jw90
