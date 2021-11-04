@@ -37,6 +37,19 @@
 </head>
 
 <body>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
+            <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+        </tr>
+    </table>
+    
     <h1>User Record: Welcome back Steven</h1>
 
     Enter your height (in): <input type="number" value="" id="height">
