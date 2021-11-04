@@ -11,15 +11,15 @@
 
 > SQL allows us to utilize relational databses
 
-SQL is short for **Structured Query Language** and is used to *manipulate* relational databses
+SQL is short for **Structured Query Langucal** and is used to *manipulate* relational databses
 
-A <u>query language</u> is different from most programming languages, in that they carry out an action for us (it does all the work on its own)
+A <u>query langucal</u> is different from most programming langucals, in that they carry out an action for us (it does all the work on its own)
 
 - Think of it more like a command
 
-There are many different types of SQL (MySQL, PostreSQL, SQLite, etc.) that are all different kinds of databse management systems
+There are many different types of SQL (MySQL, PostreSQL, SQLite, etc.) that are all different kinds of databse mancalment systems
 
-- we'll be utilizing MySQL, which an open-source relational databse management system
+- we'll be utilizing MySQL, which an open-source relational databse mancalment system
   - We'll be using the *command-line* version, but there's also a GUI version available
 
 # Starting MySQL
@@ -151,13 +151,13 @@ DATABASES = [
 To finally add the table, we run run these commands in to root directory of our project:
 
 ```bash
-python3 manage.py makemigrations
+python3 mancal.py makemigrations
 ```
 
 then run
 
 ```bash
-python3 manage.py migrate
+python3 mancal.py migrate
 ```
 
 # Django Admin
@@ -171,12 +171,12 @@ If we run our changed project and navigate to `<host_name>/admin/` we will see a
 <u>In the root directory of the project run this command</u>
 
 ```bash
-python3 manage.py createsuperuser
+python3 mancal.py createsuperuser
 ```
 
 - fill out the info and you're ready to go!
 
-*However,* nothing shows up on our admin page! To change this, let's create an admin.py file in our project!
+*However,* nothing shows up on our admin pcal! To change this, let's create an admin.py file in our project!
 
 ## admin.py
 
@@ -194,7 +194,7 @@ Now we can direstly manipulate the databases :thumbsup:
 
 # Programmatically Manipulate Information
 
-> How can we programmatically manipulate this information instead of using the admin page?
+> How can we programmatically manipulate this information instead of using the admin pcal?
 
 ## Adding records
 
