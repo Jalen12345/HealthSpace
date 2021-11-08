@@ -9,6 +9,18 @@
 
 </head>
 <body>
+	<table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
+            <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+        </tr>
+    </table>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">

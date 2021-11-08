@@ -28,7 +28,37 @@
     </style>
 </head>
 <body>
-    <h1>Tracking the User's Sleep</h1>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
+            <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+        </tr>
+    </table>
+    <h1>{{ request.user.username }}'s Sleep Data</h1>
+    <h2>Actual user Data</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Hours of Sleep</th>
+            <th>Wake Up</th>
+            <th>quality</th>
+        </tr>
+        {% for entry in user.Sleep.all %}
+        <tr>
+            <th>{{entry.date}}</th>
+            <th>{{entry.sleepHours}}</th>
+            <th>{{entry.wakeUp}}</th>
+            <th>{{entry.quality}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Sample user data (using JS)</h2>
     Enter how many hours you want to sleep every night: <input type="number" value="" id="sl">
     <br>
     <input type="Submit" value="Submit" onclick="sleepg()">
