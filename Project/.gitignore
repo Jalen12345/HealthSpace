@@ -4,3 +4,6 @@
 /*.xcodeproj
 xcuserdata/
 *.pyc
+/Dashboard/__pycache
+/Dashboard/migrations
+
