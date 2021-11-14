@@ -15,8 +15,12 @@
             <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
             <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
             <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
-            <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+            {% if user.is_authenticated %}
+                <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
+            {% else %}
+                <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
+                <th><a href="{% url 'Dashboard:register' %}">Register</a> </th>
+            {% endif %}
         </tr>
     </table>
     <h1>Exercise Score placeholder</h1>
@@ -58,5 +62,8 @@
         </tr>
         {% endfor %}
     </table>
+
+	<span><a href="{% url 'Dashboard:logout' %}">Logout</a></span>
+
 </body>
 </html>
