@@ -51,12 +51,17 @@
         </tr>
     </table>
     
-    <h1>User Record: Welcome back</h1>
+    
+    <div class = "Add data"> 
+        <h1>User Record: Welcome back </h1>
+        <form action = "" method = POST>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type = "submit" class = "btn btn-sucess">Enter</button> 
+        </form>
+    </div>
 
-    Enter your height (in): <input type="number" value="" id="height">
-    <br>
-    Enter your weight (LB): <input type="number" value="" id="weight">
-    <br>
+
     <p>What is your goal:</p>
     <input type="radio" id="goal1" name="goal" value="lose">
     <label for="goal1">lose fat</label><br>
@@ -68,6 +73,7 @@
     <b> Your BMI: </b>
     <span id="BMI"></span>
     <p id="macros"></p>
+    </form>
 
 
     <script>
@@ -228,3 +234,4 @@
 </body>
 
 </html>
+

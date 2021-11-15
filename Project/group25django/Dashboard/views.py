@@ -11,7 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 import time
-
+from .forms import storeForm
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 
@@ -22,6 +23,8 @@ def userMacros(request):
 def home(request):
     return render(request, 'index.html')
 def dashboard(request):
+    if request.method == "POST":
+        print("test")
     return render(request, 'dashboard.html')
 def diet(request):
     return render(request, 'diet.html')
@@ -53,3 +56,16 @@ def register(request):
     return render(request, 'register.html', context)
 def sleep(request):
     return render(request, 'sleep.html')
+def store(request):
+    submitted = False
+    if request.method == "POST":
+        form = storeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/store/')
+    else:
+        form = storeForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'store.html', {"form" : form, "submitted":submitted})
