@@ -16,18 +16,30 @@ import time
 
 
 def userMacros(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     macros = Macro.objects.all()
     return render(request, 'index.html', {'userMacros': macros})
 # return the home pcal
 def home(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/') 
     return render(request, 'index.html')
 def dashboard(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     return render(request, 'dashboard.html')
 def diet(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     return render(request, 'diet.html')
 def exercise(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     return render(request, 'exercise.html')
 def form(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     return render(request, 'form.html')
 def loginPage(request):
     if request.method == 'POST':
@@ -39,9 +51,11 @@ def loginPage(request):
             return HttpResponseRedirect('/dashboard/')
         else: 
             messages.info(request, 'username or password is incorrect')
-
     context = {}
     return render(request, 'login.html', context)
+def logoutUser(request):
+    logout(request)
+    return HttpResponseRedirect('/login/')
 def register(request):
     form = CreateUserForm()
     if(request.method == 'POST'):
@@ -52,4 +66,6 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 def sleep(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login/')
     return render(request, 'sleep.html')
