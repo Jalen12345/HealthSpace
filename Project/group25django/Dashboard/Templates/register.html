@@ -7,6 +7,12 @@
     <title>Register</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:login' %}">Login</a></th>
+        </tr>
+    </table>
     <form method='POST' action=""">
         {% csrf_token %}
         {{form.as_p}}

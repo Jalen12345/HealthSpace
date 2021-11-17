@@ -7,9 +7,38 @@
     <title>Diet</title>
 </head>
 <body>
-    <h1>Calories over the week placeholder</h1>
-    <h1>Avercal calorie intake relative to goal placeholder</h1>
-    <h1>Calorie nutrient distribution placeholder</h1>
-    <h1>Weight over time placeholder</h1>
+    <table>
+        <tr>
+            <th>Traingex</th>
+            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+            <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
+            <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
+        </tr>
+    </table>
+    <h1>{{ request.user.username }}'s Diet Information</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+            <th>Calories</th>
+            <th>Protein</th>
+            <th>Fat</th>
+            <th>Carbs</th>
+        </tr>
+        {% for macro in user.macro.all %}
+        <tr>
+            <th>{{macro.date}}</th>
+            <th>{{macro.currentWeight}}</th>
+            <th>{{macro.calories}}</th>
+            <th>{{macro.protein}}</th>
+            <th>{{macro.fat}}</th>
+            <th>{{macro.carbs}}</th>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

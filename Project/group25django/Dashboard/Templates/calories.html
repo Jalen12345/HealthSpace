@@ -28,80 +28,50 @@
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Traingex</th>
-            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
-            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
-            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
-            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
-            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
-            <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
-        </tr>
-    </table>
-    <h1>{{ request.user.username }}'s Sleep Data</h1>
-    <h2>Actual user Data</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Hours of Sleep</th>
-            <th>Wake Up</th>
-            <th>quality</th>
-        </tr>
-        {% for entry in user.Sleep.all %}
-        <tr>
-            <th>{{entry.date}}</th>
-            <th>{{entry.sleepHours}}</th>
-            <th>{{entry.wakeUp}}</th>
-            <th>{{entry.quality}}</th>
-        </tr>
-        {% endfor %}
-    </table>
-    <h2>Sample user data (using JS)</h2>
-    Enter how many hours you want to sleep every night: <input type="number" value="" id="sl">
+    <h1>Tracking your Calories </h1>
+    Enter how many calories you want to eat every day: <input type="number" value="" id="sl">
     <br>
-    <input type="Submit" value="Submit" onclick="sleepg()">
+    <input type="Submit" value="Submit" onclick="calorietrack()">
     <br>
     <br>
     <br>
-    <b> Your Sleep Goal: </b>
+    <b> Your Calorie Goal: </b>
     <span id="shleep"></span>
     <script>
-      var sg;
+      var cals;
       var n = 0;
       var m = 0;
       var std = 0;
-        function sleepg() {
-          sg = document.getElementById("sl").value;
-          document.getElementById("shleep").innerHTML = sg + " hours";
+        function calorietrack() {
+          caloriegoal = document.getElementById("sl").value;
+          document.getElementById("shleep").innerHTML = cals + " calories";
         }
     </script>
     <br>
     <br>
-    <h2>Enter your sleep records here:</h2>
+    <h2>Enter your calorie tracks here:</h2>
     <div class="container">
         <div class="tab tab-1">
             <table id="table" border="5">
                 <tr>
                     <th>Date</th>
-                    <th>Total hours of sleep</th>
-                    <th>Time you woke up</th>
-                    <th>How did you feel when you woke up?</th>
+                    <th>Total Calories</th>
+                    <th>Protein Consumed</th>
+                    <th>Did you feel hungry?</th>
                 </tr>
                 <tr>
                     <td>XXXX-XX-XX</td>
                     <td>X</td>
-                    <td>X:00 AM</td>
-                    <td>Good/Bad/Mediocre</td>
+                    <td>X:00 g</td>
+                    <td>Yes/No</td>
                 </tr>
             </table>
         </div>
         <div class="tab tab-2">
             Date :<input type="date" name="dat" id="dat">
-            Hours of Sleep :<input type="number" name="sleep" id="sleep">
-            Time awake :<input type="text" name="tim" id="tim">
-            How'd you feel? :<input type="text" name="feel" id="feel">
+            Calories Consumed :<input type="number" name="Calories" id="cals">
+            Protein Consumed :<input type="number" name="Protein" id="Consumed">
+            How'd you feel? :<input type="text" name="feel" id="hungry?">
             <button onclick="addHtmlTableRow();">Add</button>
         </div>
     </div>
@@ -116,9 +86,9 @@
         function checkEmptyInput() {
             var isEmpty = false,
                 dat = document.getElementById("dat").value,
-                sleep = document.getElementById("sleep").value,
-                tim = document.getElementById("tim").value;
-            feel = document.getElementById("feel").value;
+                sleep = document.getElementById("cals").value,
+                tim = document.getElementById("Consumed").value;
+            feel = document.getElementById("hungry?").value;
             if (dat === "") {
                 alert("Date Cannot Be Empty");
                 isEmpty = true;
