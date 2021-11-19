@@ -10,6 +10,10 @@ class Macro(models.Model):
     protein = models.IntegerField("Protein (g):")
     fat = models.IntegerField("Total fat (g):")
     carbs = models.IntegerField("Total carbohydrates (g):")
+
+class index(models.Model):
+    height = models.IntegerField("Height")
+    weight = models.IntegerField("Weight")
 class Sleep(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Sleep", null=True)
     date = models.DateField(blank=True, null=True)

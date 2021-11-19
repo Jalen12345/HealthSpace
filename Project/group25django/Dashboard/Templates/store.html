@@ -45,39 +45,22 @@
             <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
             <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
             <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+            <th><a href="{% url 'Dashboard:logout' %}">Login</a></th>
             <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
-            <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
         </tr>
     </table>
-    <!--Actually pulling data from the model (Dhiraj)-->
-    <h1>User Record: Welcome back {{ request.user.username }}</h1>
-    <h2>Actual User data:</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Weight</th>
-            <th>Calories</th>
-            <th>Protein</th>
-            <th>Fat</th>
-            <th>Carbs</th>
-        </tr>
-        {% for macro in user.macro.all %}
-        <tr>
-            <th>{{macro.date}}</th>
-            <th>{{macro.currentWeight}}</th>
-            <th>{{macro.calories}}</th>
-            <th>{{macro.protein}}</th>
-            <th>{{macro.fat}}</th>
-            <th>{{macro.carbs}}</th>
-        </tr>
-        {% endfor %}
-    </table>
-    <!--End of pulling data from the model-->
-    <h2>Sample user data (using JS)</h2>
-    Enter your height (in): <input type="number" value="" id="height">
-    <br>
-    Enter your weight (LB): <input type="number" value="" id="weight">
-    <br>
+    
+    
+    <div class = "Add data"> 
+        <h1>User Record: Welcome back </h1>
+        <form action = "" method = POST>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type = "submit" class = "btn btn-sucess">Enter</button> 
+        </form>
+    </div>
+
+
     <p>What is your goal:</p>
     <input type="radio" id="goal1" name="goal" value="lose">
     <label for="goal1">lose fat</label><br>
@@ -89,6 +72,7 @@
     <b> Your BMI: </b>
     <span id="BMI"></span>
     <p id="macros"></p>
+    </form>
 
 
     <script>
@@ -249,3 +233,4 @@
 </body>
 
 </html>
+
