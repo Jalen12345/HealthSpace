@@ -1,63 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Sleep</title>
     <meta charset="windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .container {
-            overflow: hidden
-        }
-        .tab {
-            float: left;
-        }
-        .tab-2 {
-            margin-left: 50px
-        }
-        .tab-2 input {
-            display: block;
-            margin-bottom: 10px
-        }
-        tr {
-            transition: all .25s ease-in-out
-        }
-        tr:hover {
-            background-color: #EEE;
-            cursor: pointer
-        }
-    </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Traingex</th>
-            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
-            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
-            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
-            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
-            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
-            <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
-        </tr>
-    </table>
-    <h1>{{ request.user.username }}'s Sleep Data</h1>
-    <h2>Actual user Data</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Hours of Sleep</th>
-            <th>Wake Up</th>
-            <th>quality</th>
-        </tr>
-        {% for entry in user.Sleep.all %}
-        <tr>
-            <th>{{entry.date}}</th>
-            <th>{{entry.sleepHours}}</th>
-            <th>{{entry.wakeUp}}</th>
-            <th>{{entry.quality}}</th>
-        </tr>
-        {% endfor %}
-    </table>
+    {% include "navbar.html" %} 
+    <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.username }}'s Sleep Data</h1>
+    <div class='box mr-5 ml-5'>
+        <table class='table is-fullwidth is-hoverable'>
+            <tr>
+                <th>Date</th>
+                <th>Hours of Sleep</th>
+                <th>Wake Up</th>
+                <th>quality</th>
+            </tr>
+            {% for entry in user.Sleep.all %}
+            <tr>
+                <th>{{entry.date}}</th>
+                <th>{{entry.sleepHours}}</th>
+                <th>{{entry.wakeUp}}</th>
+                <th>{{entry.quality}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     <h2>Sample user data (using JS)</h2>
     Enter how many hours you want to sleep every night: <input type="number" value="" id="sl">
     <br>

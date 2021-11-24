@@ -22,3 +22,4 @@ urlpatterns = [
     path('store/', views.store, name = 'store'),
     path('logout/', views.logoutUser, name='logout')
 ]
+
