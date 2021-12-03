@@ -1,0 +1,30 @@
+<table>
+    <tr>
+        <th>Traingex</th>
+        <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
+        <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
+        <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
+        <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
+        <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
+        <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
+        <th><a href="{% url 'Dashboard:data' %}">data</a> </th>
+        <th><a href="{% url 'Dashboard:logout' %}">Logout</a></th>
+    </tr>
+</table>
+{% block content %}
+{% for data in all %}
+    Date: {{data.date}} <br/>
+    Height: {{data.height}} <br/>
+    Weight: {{data.weight}} <br/>
+    Calories: {{data.calories}} <br/>
+    Protein: {{data.protein}} <br/>
+    Fat: {{data.fat}} <br/>
+    Carbs: {{data.carbs}}
+
+    <br/>
+    <hr>
+
+{% endfor %}
+
+{% endblock %}
+

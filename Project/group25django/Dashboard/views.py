@@ -85,3 +85,7 @@ def store(request):
             submitted = True
 
     return render(request, 'store.html', {"form" : form, "submitted":submitted})
+
+def data(request):
+    all_data = index.objects.all()
+    return render(request, 'data.html', {'all': all_data})

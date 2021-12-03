@@ -13,8 +13,13 @@ class CreateUserForm(UserCreationForm):
 class storeForm(ModelForm):
     class Meta: 
         model = index
-        fields = ('height', 'weight')
+        fields = ('date', 'height', 'weight', 'calories', 'protein', 'fat', 'carbs')
         widgets = {
+            'date' : forms.TextInput(attrs = {'class' : 'form-control'}),
             'height' : forms.TextInput(attrs = {'class' : 'form-control'}),
             'weight' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'calories' : forms.TextInput(attrs = {'class' : 'form-control'}),
+            'protein' : forms.TextInput(attrs = {'class' : 'form-control'}), 
+            'fat' : forms.TextInput(attrs = {'class' : 'form-control'}), 
+            'carbs': forms.TextInput(attrs = {'class' : 'form-control'})
         }
