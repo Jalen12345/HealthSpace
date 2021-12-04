@@ -20,12 +20,12 @@ def userMacros(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     macros = Macro.objects.all()
-    return render(request, 'index.html', {'userMacros': macros})
+    return render(request, 'dashboard.html', {'userMacros': macros})
 # return the home pcal
 def home(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/') 
-    return render(request, 'index.html')
+    return render(request, 'dashboard.html')
 def dashboard(request):
     if request.method == "POST":
         print("test")
@@ -85,3 +85,7 @@ def store(request):
             submitted = True
 
     return render(request, 'store.html', {"form" : form, "submitted":submitted})
+
+def data(request):
+    all_data = index.objects.all()
+    return render(request, 'data.html', {'all': all_data})
