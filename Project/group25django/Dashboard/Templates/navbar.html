@@ -28,20 +28,14 @@
               <a class="navbar-item" href="{% url 'Dashboard:dashboard' %}">
                 Dashboard
               </a>
-        
-              <a class="navbar-item" href="{% url 'Dashboard:form' %}">
-                Add Entry
-              </a>
-        
+
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                   More
                 </a>
         
                 <div class="navbar-dropdown">
-                  <a class="navbar-item" href="{% url 'Dashboard:exercise' %}">
-                    Exercise
-                  </a>
+                  
                   <a class="navbar-item" href="{% url 'Dashboard:diet' %}">
                     Diet
                   </a>
@@ -51,6 +45,9 @@
                   </a>
                   <a class='navbar-item' href="{% url 'Dashboard:store' %}">Store</a>
                   <a class='navbar-item' href="{% url 'Dashboard:data' %}">Data</a>
+                  <a class="navbar-item" href="{% url 'Dashboard:exercise' %}">
+                    Exercise
+                  </a>
                 </div>
             </div>
         </div>
