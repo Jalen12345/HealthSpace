@@ -22,14 +22,14 @@
                 <th>Fat</th>
                 <th>Carbs</th>
             </tr>
-            {% for macro in user.macro.all %}
+            {% for index in user.index.all %}
             <tr>
-                <th>{{macro.date}}</th>
-                <th>{{macro.currentWeight}}</th>
-                <th>{{macro.calories}}</th>
-                <th>{{macro.protein}}</th>
-                <th>{{macro.fat}}</th>
-                <th>{{macro.carbs}}</th>
+                <th>{{index.date}}</th>
+                <th>{{index.weight}}</th>
+                <th>{{index.calories}}</th>
+                <th>{{index.protein}}</th>
+                <th>{{index.fat}}</th>
+                <th>{{index.carbs}}</th>
             </tr>
             {% endfor %}
         </table>
