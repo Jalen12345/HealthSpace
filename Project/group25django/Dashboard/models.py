@@ -12,13 +12,14 @@ class Macro(models.Model):
     carbs = models.IntegerField("Total carbohydrates (g):")
 
 class index(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="index", null=True)
     date = models.DateField(blank=True, null=True)
-    height = models.IntegerField("Height (cm)")
-    weight = models.IntegerField("Weight (Ib)")
+    height = models.IntegerField("Height(cm)")
+    weight = models.IntegerField("Weight(Ib)")
     calories = models.IntegerField("Calories:")
-    protein = models.IntegerField("Protein (g):")
-    fat = models.IntegerField("Total fat (g):")
-    carbs = models.IntegerField("Total carbohydrates (g):")
+    protein = models.IntegerField("Protein(g):")
+    fat = models.IntegerField("Fat(g):")
+    carbs = models.IntegerField("Carbs(g):")
 
     def __int__(self):
         return self.date + ' ' + self.height + ' ' + self.weight + ' ' + self.calories + ' ' + self.protein + ' ' + self.fat + ' ' + self.carbs
