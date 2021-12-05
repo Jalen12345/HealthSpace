@@ -34,47 +34,41 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container h-100">
-		<div class="d-flex justify-content-center h-100">
-			<div class="user_card">
-				<div class="d-flex justify-content-center" align="center">
-
-
-					<h3 id="form-title">LOGIN</h3>
-				</div>
-				<div class="d-flex justify-content-center form_container">
-					<form method="POST" action="" align="center">
-                        {% csrf_token %}
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
+	<div class='columns is-centered'>
+		<div class='column is-two-fifths has-marg m-3'>
+			<div class='card'>
+				<header class="card-header">
+					<p class="card-header-title">
+						Login
+					</p>
+				</header>
+				<div class='card-content'>
+					<form action = "" method = POST>
+						{% csrf_token %}
+							<div class='columns'>
+								<div class='column is-one-third'>
+									<label class="label">Username</label>
+								</div>
+								<div class='column'>
+									<input class="input" name='username' type="text" placeholder="username">
+								</div>
 							</div>
-							<input type="text" name="username" placeholder="Username..." class="form-control">
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							<div class='columns'>
+								<div class='column is-one-third'>
+									<label class="label">Password</label>
+								</div>
+								<div class='column'>
+									<input class="input" name='password' type="password" placeholder="password">
+								</div>
 							</div>
-								<input type="password" name="password" placeholder="Password..." class="form-control" >
-						</div>
-
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<input class="btn login_btn" type="submit" value="Login">
-				   			</div>
+						<button type = "submit" class = "button is-link">Enter</button> 
 					</form>
-
-				</div>
-                {% for message in messages %}
-                    <p id="messages">{{message}}</p>
-                {% endfor %}
-				<div class="mt-4">
-					<div class="d-flex justify-content-center links" align="center">
-						Don't have an account? <a href="{% url 'Dashboard:register' %}">Register</a>
-					</div>			
 				</div>
 			</div>
+			
 		</div>
 	</div>
+	
 </body>
 
 </html>

@@ -78,6 +78,7 @@ def register(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, 'Account Successfully Created!')
+            return HttpResponseRedirect('/login/')
     context = {'form':form}
     return render(request, 'register.html', context)
 def sleep(request):
