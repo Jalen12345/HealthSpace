@@ -5,3 +5,4 @@ from .models import index
 admin.site.register(models.Sleep)
 admin.site.register(models.Macro)
 admin.site.register(models.index)
+admin.site.register(models.Exercise)
