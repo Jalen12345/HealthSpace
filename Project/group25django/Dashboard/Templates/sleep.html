@@ -1,40 +1,164 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>Sleep</title>
     <meta charset="windows-1252">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            overflow: hidden
+        }
+        .tab {
+            float: left;
+        }
+        .tab-2 {
+            margin-left: 50px
+        }
+        .tab-2 input {
+            display: block;
+            margin-bottom: 10px
+        }
+        tr {
+            transition: all .25s ease-in-out
+        }
+        tr:hover {
+            background-color: #EEE;
+            cursor: pointer
+        }
+    </style>
 </head>
 <body>
-    {% include "navbar.html" %}
+    <h1 class="tag is-large is-rounded is-light has-marg m-3">Tracking the User's Sleep</h1>
+    <br>
+    <div class ='box mr-5 ml-5'>
+    Enter how many hours you want to sleep every night: <input type="number" value="" id="sl">
+    <input type="Submit" value="Submit" onclick="sleepg()">
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class='box mr-5 ml-5'>
+      <b> Your Sleep Goal: </b>
+      <span id="shleep"></span>
+      <script>
+        var sg;
+        var n = 0;
+        var m = 0;
+        var std = 0;
+          function sleepg() {
+            sg = document.getElementById("sl").value;
+            document.getElementById("shleep").innerHTML = sg + " hours";
+          }
+      </script>
+      <br>
+      <br>
+      <h2>Enter your sleep records here:</h2>
+      <div class="container">
+          <div class="tab tab-1">
+              <table id="table" border="5">
+                  <tr>
+                      <th>Date</th>
+                      <th>Total hours of sleep</th>
+                      <th>Time you woke up</th>
+                      <th>How did you feel when you woke up?</th>
+                  </tr>
+                  <tr>
+                      <td>XXXX-XX-XX</td>
+                      <td>X</td>
+                      <td>X:00 AM</td>
+                      <td>Good/Bad/Mediocre</td>
+                  </tr>
+              </table>
+          </div>
+          <div class="tab tab-2">
+              Date :<input type="date" name="dat" id="dat">
+              Hours of Sleep :<input type="number" name="sleep" id="sleep">
+              Time awake :<input type="text" name="tim" id="tim">
+              How'd you feel? :<input type="text" name="feel" id="feel">
+              <button onclick="addHtmlTableRow();">Add</button>
+          </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <h2>How well you are doing:</h2>
+    <span id="sleepstd"></span>
+    <br>
+    <div class="box">
+      <div style="width:800px;height:50px;border:1px solid #100; background-color: Green" id = "box"></div>
+    </div>
     
-    <div class='columns '>
-    <div class='column is-three-quarters'>
-        <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.username }}'s Sleep Data</h1>
-        <div class='box mr-5 ml-5'>
-            <table class='table is-fullwidth is-hoverable'>
-                <tr>
-                    <th>Date</th>
-                    <th>Hours of Sleep</th>
-                    <th>Wake Up</th>
-                    <th>quality</th>
-                </tr>
-                {% for entry in user.Sleep.all %}
-                <tr>
-                    <th>{{entry.date}}</th>
-                    <th>{{entry.sleepHours}}</th>
-                    <th>{{entry.wakeUp}}</th>
-                    <th>{{entry.quality}}</th>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-    <div class = "column has-marg mr-3 mt-3"> 
-        {% include 'form.html' %}
-    </div>
-    </div>
-</div>
+    <script>
+        var rIndex,
+            table = document.getElementById("table");
+        function checkEmptyInput() {
+            var isEmpty = false,
+                dat = document.getElementById("dat").value,
+                sleep = document.getElementById("sleep").value,
+                tim = document.getElementById("tim").value;
+            feel = document.getElementById("feel").value;
+            if (dat === "") {
+                alert("Date Cannot Be Empty");
+                isEmpty = true;
+            }
+            else if (sleep === "") {
+                alert("Sleep Cannot Be Empty");
+                isEmpty = true;
+            }
+            else if (tim === "") {
+                alert("Time Cannot Be Empty");
+                isEmpty = true;
+            }
+            else if (feel === "") {
+                alert("Feeling Cannot Be Empty");
+                isEmpty = true;
+            }
+            return isEmpty;
+        }
+        function addHtmlTableRow() {
+            if (!checkEmptyInput()) {                
+                var newRow = table.insertRow(table.length),
+                cell1 = newRow.insertCell(0),
+                cell2 = newRow.insertCell(1),
+                cell3 = newRow.insertCell(2),
+                cell4 = newRow.insertCell(3),
+                dat = document.getElementById("dat").value,
+                sleep = document.getElementById("sleep").value,
+                tim = document.getElementById("tim").value;
+                feel = document.getElementById("feel").value;
+              
+                cell1.innerHTML = dat;
+                cell2.innerHTML = sleep;
+                cell3.innerHTML = tim;
+                cell4.innerHTML = feel;
+
+                n = n + 1;
+                m = m + Math.abs(sleep - sg);
+                std = m/n;
+                document.getElementById("sleepstd").innerHTML = std;
+                if(std <= 2) {
+                  document.getElementById("box").style.backgroundColor = "Green";
+                } else if (std <= 4) {
+                  document.getElementById("box").style.backgroundColor = "Yellow";
+                } else {
+                  document.getElementById("box").style.backgroundColor = "Red";
+                }
+                selectedRowToInput();
+            }
+        }
+        function selectedRowToInput() {
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].onclick = function () {
+                    rIndex = this.rowIndex;
+                    document.getElementById("dat").value = this.cells[0].innerHTML;
+                    document.getElementById("sleep").value = this.cells[1].innerHTML;
+                    document.getElementById("tim").value = this.cells[2].innerHTML;
+                    document.getElementById("feel").value = this.cells[3].innerHTML;
+                };
+            }
+        }
+        selectedRowToInput();
+    </script>
 </body>
 </html>
