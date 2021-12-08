@@ -1,0 +1,22 @@
+﻿Aayush Bandopadhyay
+CS 196
+15 October 2021
+CS 196 Project Notes
+* Project Overview
+   * Fitness website
+      * Focuses on tracking calories, sleep, diet, and overall health and wellbeing
+      * We want to have data stored so that it is easy to access and manipulate, and we’ll be able to make further analysis and graphs on what we have collected. 
+* Technologies/Languages to use
+   * Django
+      * Used for data storage and retrieval, essentially the backend of the website.
+      * We can implement different forms for data storage which we can then retrieve for data analysis purposes. This can be used to make a graph of calories consumed over time, or variance in sleep.
+      * Python
+         * The language used to code with Django
+   * Web Development
+      * HTML
+         * The backbone of the website we are developing, since HTML is used to organize every element that will be on the website.
+         * Can be used to place buttons, make headers, and other elements that can be used to make our website functional.
+      * CSS
+         * Used to style our website, and make it aesthetically pleasing
+      * JavaScript
+         * Used to create any functions or algorithms
