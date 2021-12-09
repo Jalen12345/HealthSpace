@@ -4,14 +4,12 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
 from django.http import HttpResponse
 from Dashboard.models import User, Macro
-from .forms import CreateUserForm
 from django.contrib import messages
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import *
-import time
-from .forms import storeForm, sleepForm
+from .forms import CreateUserForm, storeForm, sleepForm, exerciseForm
 from django.http import HttpResponseRedirect
 # Create your views here.
 
@@ -22,16 +20,22 @@ def userMacros(request):
     macros = Macro.objects.all()
     return render(request, 'dashboard.html', {'userMacros': macros})
 # return the home pcal
+
+
 def home(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect('/login/') 
+        return HttpResponseRedirect('/login/')
     return render(request, 'dashboard.html')
+
+
 def dashboard(request):
     if request.method == "POST":
         print("test")
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     return render(request, 'dashboard.html')
+
+
 def diet(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
@@ -47,15 +51,34 @@ def diet(request):
         form = storeForm
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, 'diet.html', {"form" : form, "submitted":submitted})
+    return render(request, 'diet.html', {"form": form, "submitted": submitted})
+
+
 def exercise(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
-    return render(request, 'exercise.html')
+    submitted = False
+    if request.method == "POST":
+        form = exerciseForm(request.POST)
+        if form.is_valid():
+            exercisef = form.save(commit=False)
+            exercisef.user = request.user
+            exercisef.save()
+            return HttpResponseRedirect('/exercise/')
+    else:
+        form = exerciseForm
+        if 'submitted' in request.GET:
+            submitted = True
+    all = Exercise.objects.all()
+    return render(request, 'exercise.html', {"form": form, "submitted": submitted})
+
+
 def form(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     return render(request, 'form.html')
+
+
 def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -64,13 +87,17 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return HttpResponseRedirect('/dashboard/')
-        else: 
+        else:
             messages.info(request, 'username or password is incorrect')
     context = {}
     return render(request, 'login.html', context)
+
+
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/login/')
+
+
 def register(request):
     form = CreateUserForm()
     if(request.method == 'POST'):
@@ -79,8 +106,10 @@ def register(request):
             form.save()
             messages.success(request, 'Account Successfully Created!')
             return HttpResponseRedirect('/login/')
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'register.html', context)
+
+
 def sleep(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
@@ -97,7 +126,8 @@ def sleep(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    return render(request, 'sleep.html', {"form" : form, "submitted":submitted})
+    return render(request, 'sleep.html', {"form": form, "submitted": submitted})
+
 
 def store(request):
     submitted = False
@@ -111,7 +141,8 @@ def store(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    return render(request, 'store.html', {"form" : form, "submitted":submitted})
+    return render(request, 'store.html', {"form": form, "submitted": submitted})
+
 
 def data(request):
     all_data = index.objects.all()

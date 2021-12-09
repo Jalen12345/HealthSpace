@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>Dashboard</title>
 </head>
-<body>
-    
-   {% include "navbar.html" %}  
 
-    <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.username }}'s Diet Information</h1>
+<body>
+
+    {% include "navbar.html" %}
+
+    <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.first_name }}'s Diet Information
+    </h1>
     <div class='box mr-5 ml-5'>
         <table class='table is-fullwidth is-hoverable'>
             <tr>
@@ -34,7 +37,7 @@
             {% endfor %}
         </table>
     </div>
-    <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.username }}'s Sleep Data</h1>
+    <h1 class="tag is-large is-rounded is-light has-marg m-3">{{ request.user.first_name }}'s Sleep Data</h1>
     <div class='box mr-5 ml-5'>
         <table class='table is-fullwidth is is-hoverable'>
             <tr>
@@ -54,4 +57,5 @@
         </table>
     </div>
 </body>
+
 </html>
