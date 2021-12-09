@@ -1,54 +1,15 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title></title>
-    <meta charset="windows-1252">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        .container {
-            overflow: hidden
-        }
-
-        .tab {
-            float: left;
-        }
-
-        .tab-2 {
-            margin-left: 50px
-        }
-
-        .tab-2 input {
-            display: block;
-            margin-bottom: 10px
-        }
-
-        tr {
-            transition: all .25s ease-in-out
-        }
-
-        tr:hover {
-            background-color: #EEE;
-            cursor: pointer
-        }
-    </style>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Dashboard</title>
 </head>
-
 <body>
-    <table>
-        <tr>
-            <th>Traingex</th>
-            <th><a href="{% url 'Dashboard:dashboard' %}">Dashboard</a></th>
-            <th><a href="{% url 'Dashboard:exercise' %}">Exercise</a></th>
-            <th><a href="{% url 'Dashboard:diet' %}">Diet</a></th>
-            <th><a href="{% url 'Dashboard:sleep' %}">Sleep</a></th>
-            <th><a href="{% url 'Dashboard:form' %}">Add Entry</a></th>
-            <th><a href="{% url 'Dashboard:logout' %}">Login</a></th>
-            <th><a href="{% url 'Dashboard:store' %}">Store</a> </th>
-        </tr>
-    </table>
+    
+   {% include "navbar.html" %} 
     
     
     <div class = "Add data"> 
@@ -60,7 +21,7 @@
         </form>
     </div>
 
-
+    <!--
     <p>What is your goal:</p>
     <input type="radio" id="goal1" name="goal" value="lose">
     <label for="goal1">lose fat</label><br>
@@ -93,12 +54,12 @@
 
         }
     </script>
-    <!--  Adapted and modifiedfrom tutorial shown below 
+   Adapted and modifiedfrom tutorial shown below 
     - 1BestCSharp Blog
     - 4/4/2017
     - Whttps://www.youtube.com/watch?v=KnKMGCSPj3Y
     >
-    -->
+
     <div class="container">
         <div class="tab tab-1">
             <table id="table" border="5">
@@ -229,7 +190,7 @@
             document.getElementById("fats").value = "";
         }
     </script>
-
+-->
 </body>
 
 </html>

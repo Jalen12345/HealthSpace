@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .models import *
 import time
-from .forms import storeForm
+from .forms import storeForm, sleepForm
 from django.http import HttpResponseRedirect
 # Create your views here.
 
@@ -20,12 +20,12 @@ def userMacros(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     macros = Macro.objects.all()
-    return render(request, 'index.html', {'userMacros': macros})
+    return render(request, 'dashboard.html', {'userMacros': macros})
 # return the home pcal
 def home(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/') 
-    return render(request, 'index.html')
+    return render(request, 'dashboard.html')
 def dashboard(request):
     if request.method == "POST":
         print("test")
@@ -35,7 +35,19 @@ def dashboard(request):
 def diet(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
-    return render(request, 'diet.html')
+    submitted = False
+    if request.method == "POST":
+        form = storeForm(request.POST)
+        if form.is_valid():
+            diet = form.save(commit=False)
+            diet.user = request.user
+            diet.save()
+            return HttpResponseRedirect('/diet/')
+    else:
+        form = storeForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'diet.html', {"form" : form, "submitted":submitted})
 def exercise(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
@@ -66,12 +78,27 @@ def register(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, 'Account Successfully Created!')
+            return HttpResponseRedirect('/login/')
     context = {'form':form}
     return render(request, 'register.html', context)
 def sleep(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
-    return render(request, 'sleep.html')
+    submitted = False
+    if request.method == "POST":
+        form = sleepForm(request.POST)
+        if form.is_valid():
+            sleep = form.save(commit=False)
+            sleep.user = request.user
+            sleep.save()
+            return HttpResponseRedirect('/sleep/')
+    else:
+        form = sleepForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'sleep.html', {"form" : form, "submitted":submitted})
+
 def store(request):
     submitted = False
     if request.method == "POST":
@@ -85,3 +112,7 @@ def store(request):
             submitted = True
 
     return render(request, 'store.html', {"form" : form, "submitted":submitted})
+
+def data(request):
+    all_data = index.objects.all()
+    return render(request, 'data.html', {'all': all_data})
